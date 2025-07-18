@@ -130,14 +130,28 @@ class TimestampNoteModal extends Modal {
 		cancelButton.style.marginRight = '10px';
 		cancelButton.addEventListener('click', () => this.close());
 
-		const submitButton = buttonContainer.createEl('button', {text: 'Add to Daily Note'});
-		submitButton.addEventListener('click', async () => {
+		const submitButton = buttonContainer.createEl('button', {text: 'Add to Daily Note (⌘↵)'});
+		
+		const submitNote = async () => {
 			const content = this.input.value.trim();
 			if (content) {
 				await this.plugin.appendTimestampedNote(content);
 				this.close();
 			} else {
 				new Notice('Please enter some content');
+			}
+		};
+		
+		submitButton.addEventListener('click', submitNote);
+		
+		// Add keyboard shortcut support (Cmd/Ctrl + Enter)
+		this.input.addEventListener('keydown', async (event: KeyboardEvent) => {
+			if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+				event.preventDefault();
+				await submitNote();
+			} else if (event.key === 'Escape') {
+				event.preventDefault();
+				this.close();
 			}
 		});
 
