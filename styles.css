@@ -1,8 +1,39 @@
-/*
+/* Timestamp Notes Plugin Styles */
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.timestamp-notes-modal button {
+    padding: 6px 12px;
+    border-radius: 4px;
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border: none;
+    cursor: pointer;
+}
 
-If your plugin does not need CSS, delete this file.
+.timestamp-notes-modal button:hover {
+    background-color: var(--interactive-accent-hover);
+}
 
-*/
+.timestamp-notes-modal button:first-child {
+    background-color: var(--background-modifier-border);
+    color: var(--text-normal);
+}
+
+.timestamp-notes-modal button:first-child:hover {
+    background-color: var(--background-modifier-border-hover);
+}
+
+.timestamp-notes-modal textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+    font-family: var(--font-interface);
+    resize: vertical;
+}
+
+.timestamp-notes-modal textarea:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+}
